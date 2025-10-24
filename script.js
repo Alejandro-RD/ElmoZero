@@ -74,4 +74,45 @@ document.addEventListener('DOMContentLoaded', () => {
             clipButton.textContent = 'Ver más clips ▼';
         }
     });
+
+    // --- LÓGICA DEL INDICADOR EN VIVO DE TWITCH (Usando Serverless API) ---
+
+    async function checkTwitchStatus() {
+    const twitchLink = document.getElementById('twitch-link');
+    
+    // Cambia el texto temporalmente
+    twitchLink.textContent = 'Verificando estado...';
+
+    try {
+        // Llama a tu función Serverless en Vercel
+        const response = await fetch('/api/twitch'); 
+        const data = await response.json();
+
+        if (data.error) {
+            console.error(data.error);
+            twitchLink.textContent = 'Twitch - Error al obtener estado';
+            twitchLink.classList.remove('live-active');
+            return;
+        }
+
+        if (data.isLive) {
+            // ¡ESTÁ EN VIVO!
+            twitchLink.textContent = `🔴 ¡EN VIVO! - ${data.title || 'Twitch Stream'}`;
+            twitchLink.classList.add('live-active');
+        } else {
+            // No está en vivo
+            twitchLink.textContent = 'Offline - Sígueme en Twitch';
+            twitchLink.classList.remove('live-active');
+        }
+
+    } catch (error) {
+        console.error("Error de conexión con el endpoint de la API:", error);
+        twitchLink.textContent = 'Twitch - Enlace Directo';
+    }
+}
+
+// Llama a la función al cargar la página
+// Asegúrate de que esta línea esté dentro del evento DOMContentLoaded
+// ...
+checkTwitchStatus();
 });
