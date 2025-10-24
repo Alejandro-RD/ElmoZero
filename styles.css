@@ -1,0 +1,259 @@
+/* 1. RESET Y FUENTES BÁSICAS */
+:root {
+    /* Define colores base */
+    --color-primary: #8a2be2; /* Azul violeta (para un toque streamer) */
+    --color-background: #1a1a2e; /* Fondo oscuro */
+    --color-text: #ffffff;
+    --color-button-bg: #2e2e4a; 
+    --color-hover: #9c40fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Fuente moderna y legible */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    /* Altura mínima para que el footer se quede abajo */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 2. CONTENEDOR PRINCIPAL Y CENTRADO */
+.profile-container {
+    width: 90%;
+    max-width: 600px; /* Limita el ancho en pantallas grandes */
+    padding: 20px 0;
+    text-align: center;
+    flex-grow: 1; /* Permite que el contenedor crezca */
+}
+
+/* 3. ENCABEZADO Y FOTO DE PERFIL */
+.profile-header {
+    margin-bottom: 30px;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Hace la imagen perfectamente redonda */
+    border: 4px solid var(--color-primary); /* Borde de color principal */
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.profile-picture:hover {
+    transform: scale(1.05); /* Pequeña animación al pasar el ratón */
+}
+
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 1em;
+    color: #cccccc;
+    margin: 0 10px;
+}
+
+/* 4. SECCIÓN DE ENLACES (BOTONES) */
+.links-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre botones */
+}
+
+.link-button {
+    text-decoration: none; /* Quita el subrayado predeterminado */
+    color: var(--color-text);
+    background-color: var(--color-button-bg);
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.link-button:hover {
+    background-color: var(--color-hover);
+    transform: translateY(-2px); /* Efecto de "levantamiento" */
+}
+
+
+/* 5. ESTILOS ESPECÍFICOS DE BOTÓN */
+.streaming {
+    background-color: #9146FF; /* Púrpura oficial de Twitch */
+}
+
+.streaming:hover {
+    background-color: #772ce8; /* Un púrpura ligeramente más oscuro para el hover */
+}
+
+.youtube {
+    background-color: #ff0000; /* Rojo oficial de YouTube */
+}
+
+.youtube:hover {
+    background-color: #cc0000; /* Rojo más oscuro para el efecto hover */
+    /* Mantenemos el transform: translateY(-2px) que ya está en .link-button */
+}
+
+.instagram {
+    background-image: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045); /* Gradiente base */
+}
+
+.instagram:hover {
+    /* Un gradiente similar pero más brillante o con colores ligeramente desplazados */
+    background-image: linear-gradient(to right, #9c40fa, #ff4d4d, #ffd777); 
+}
+
+.facebook {
+    background-color: #1877F2; /* Azul oficial de Facebook */
+}
+
+.facebook:hover {
+    background-color: #125eac; /* Azul ligeramente más oscuro para el hover */
+}
+
+/* 6. SECCIÓN DE CLIPS Y GALERÍA */
+.clips-section {
+    margin-top: 40px;
+}
+
+.clips-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    border-bottom: 2px solid var(--color-primary);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.video-gallery {
+    display: grid;
+    /* Muestra 1 columna en móvil y 2 columnas en pantallas más grandes */
+    grid-template-columns: 1fr; 
+    gap: 20px;
+}
+
+.video-item {
+    border-radius: 10px;
+    overflow: hidden; /* Asegura que el iframe no se salga del borde */
+    background-color: #0d0d1b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Asegura que el iframe ocupe todo el espacio del contenedor */
+.video-item iframe {
+    display: block;
+}
+
+/* 7. PIE DE PÁGINA (FOOTER) */
+footer {
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.8em;
+    color: #666666;
+    border-top: 1px solid #2e2e4a;
+}
+
+/* MEDIA QUERIES: Optimización para Tablets y Desktops */
+@media (min-width: 768px) {
+    .profile-container {
+        padding: 40px 0;
+    }
+    
+    .links-section {
+        gap: 20px;
+    }
+
+    .link-button {
+        padding: 18px 25px;
+        font-size: 1.2em;
+    }
+    
+    .video-gallery {
+        /* Cambia a 2 columnas para pantallas más grandes */
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ESTILO DEL BOTÓN DE TEMA */
+.theme-toggle {
+    background: var(--color-button-bg);
+    color: var(--color-text);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    position: absolute; /* Para posicionarlo libremente */
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* En móvil, lo centramos un poco mejor */
+@media (max-width: 650px) {
+    .theme-toggle {
+        top: 20px;
+        right: 10px; 
+    }
+}
+
+/* VARIABLES PARA EL MODO CLARO */
+.light-mode {
+    --color-background: #f4f4f9; /* Fondo muy claro */
+    --color-text: #333333;
+    --color-button-bg: #e0e0e0; 
+    --color-hover: #cccccc;
+    --color-primary: #007bff; /* Azul vibrante como acento */
+}
+
+/* Aplicar colores del modo claro al body */
+.light-mode body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+/* Ajustar colores específicos de algunos elementos en modo claro */
+.light-mode .profile-picture {
+    border-color: var(--color-primary);
+}
+
+.light-mode .profile-header p {
+    color: #333333; /* Gris muy oscuro, casi negro, para máximo contraste */
+}
+
+.light-mode .theme-toggle {
+    background-color: var(--color-button-bg);
+    color: var(--color-text);
+}
+
+.light-mode .video-item {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ESTILO PARA OCULTAR VIDEOS */
+.video-item.hidden {
+    display: none;
+}
+
+/* Opcional: Asegura que el botón de clips use el estilo general de botón */
+#toggle-clips-button {
+    /* Sobreescribe el color de fondo para que destaque o mantenga el color base */
+    background-color: var(--color-button-bg); 
+}
