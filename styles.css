@@ -100,6 +100,28 @@ p {
     background-color: #772ce8; /* Un púrpura ligeramente más oscuro para el hover */
 }
 
+/* Estado EN VIVO: rojo de alerta con un pulso suave */
+.streaming.live-active {
+    background-color: #e91916; /* Rojo del indicador "LIVE" de Twitch */
+    animation: live-pulse 2s ease-in-out infinite;
+}
+
+.streaming.live-active:hover {
+    background-color: #c4100e;
+}
+
+@keyframes live-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(233, 25, 22, 0.6); }
+    50%      { box-shadow: 0 0 0 8px rgba(233, 25, 22, 0); }
+}
+
+/* Respeta a quienes prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .streaming.live-active {
+        animation: none;
+    }
+}
+
 .youtube {
     background-color: #ff0000; /* Rojo oficial de YouTube */
 }
@@ -137,6 +159,13 @@ p {
     border-bottom: 2px solid var(--color-primary);
     display: inline-block;
     padding-bottom: 5px;
+}
+
+.construction-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto; /* Mantiene la proporción a pesar de los atributos width/height */
+    margin-top: 20px;
 }
 
 .video-gallery {
