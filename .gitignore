@@ -1,0 +1,9 @@
+# Variables de entorno (contienen TWITCH_CLIENT_SECRET)
+.env
+.env.*
+
+# Configuración local de la CLI de Vercel
+.vercel/
+
+# Dependencias
+node_modules/

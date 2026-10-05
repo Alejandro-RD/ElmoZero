@@ -148,6 +148,15 @@ p {
     background-color: #125eac; /* Azul ligeramente más oscuro para el hover */
 }
 
+/* Los botones de marca tienen fondo de color fijo, así que el texto siempre es blanco
+   (si usaran var(--color-text), en modo claro quedaría gris oscuro sobre color) */
+.streaming,
+.youtube,
+.instagram,
+.facebook {
+    color: #ffffff;
+}
+
 /* 6. SECCIÓN DE CLIPS Y GALERÍA */
 .clips-section {
     margin-top: 40px;
