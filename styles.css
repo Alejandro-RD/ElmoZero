@@ -260,12 +260,6 @@ footer {
     --color-primary: #007bff; /* Azul vibrante como acento */
 }
 
-/* Aplicar colores del modo claro al body */
-.light-mode body {
-    background-color: var(--color-background);
-    color: var(--color-text);
-}
-
 /* Ajustar colores específicos de algunos elementos en modo claro */
 .light-mode .profile-picture {
     border-color: var(--color-primary);

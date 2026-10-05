@@ -11,7 +11,7 @@
     <div class="profile-container">
         
         <header class="profile-header">
-            <button id="theme-toggle" class="theme-toggle">
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Cambiar a modo claro">
                 ☀️
             </button>
             <img src="images/profile.webp" alt="Foto de perfil de Streamer" class="profile-picture" width="120" height="120">
@@ -22,19 +22,19 @@
         </header>
 
         <main class="links-section">
-            <a href="https://www.twitch.tv/elmozer0" target="_blank" class="link-button streaming" id="twitch-link">
+            <a href="https://www.twitch.tv/elmozer0" target="_blank" rel="noopener noreferrer" class="link-button streaming" id="twitch-link">
                 Cargando estado...
             </a>
 
-            <a href="https://www.youtube.com/@ElmoZer0" target="_blank" class="link-button youtube">
+            <a href="https://www.youtube.com/@ElmoZer0" target="_blank" rel="noopener noreferrer" class="link-button youtube">
                 ▶️ Mis Mejores Videos de YouTube
             </a>
 
-            <a href="https://www.instagram.com/elmozer0/" target="_blank" class="link-button instagram">
+            <a href="https://www.instagram.com/elmozer0/" target="_blank" rel="noopener noreferrer" class="link-button instagram">
                 📸 Mi Día a Día en Instagram
             </a>
 
-            <a href="https://www.facebook.com/profile.php?id=100066637145587&sk=about" target="_blank" class="link-button facebook">
+            <a href="https://www.facebook.com/profile.php?id=100066637145587&sk=about" target="_blank" rel="noopener noreferrer" class="link-button facebook">
                 👍 Sígueme en Facebook
             </a>
         </main>
@@ -101,7 +101,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Alejandro R.D. Todos los derechos reservados.</p>
+        <p>&copy; <span id="current-year">2024</span> Alejandro R.D. Todos los derechos reservados.</p>
     </footer>
     <script src="script.js"></script>
 </body>

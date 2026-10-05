@@ -8,9 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (theme === 'light') {
             body.classList.add('light-mode');
             toggleButton.textContent = '🌙'; // Muestra la luna para cambiar a oscuro
+            toggleButton.setAttribute('aria-label', 'Cambiar a modo oscuro');
         } else {
             body.classList.remove('light-mode');
             toggleButton.textContent = '☀️'; // Muestra el sol para cambiar a claro
+            toggleButton.setAttribute('aria-label', 'Cambiar a modo claro');
         }
     }
 
@@ -31,6 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', 'light');
         }
     });
+
+    // --- AÑO DEL FOOTER (el HTML conserva un año de respaldo si el script no carga) ---
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
     // --- LÓGICA DE LA GALERÍA DE CLIPS ---
     const clipButton = document.getElementById('toggle-clips-button');
@@ -78,8 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
 
             if (data.error) {
+                // El detalle técnico se queda en la consola; el visitante ve un texto neutro
                 console.error(data.error);
-                twitchLink.textContent = 'Twitch - Error al obtener estado';
+                twitchLink.textContent = '📺 Sígueme en Twitch';
                 twitchLink.classList.remove('live-active');
                 return;
             }
@@ -96,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error("Error de conexión con el endpoint de la API:", error);
-            twitchLink.textContent = 'Twitch - Enlace Directo';
+            twitchLink.textContent = '📺 Sígueme en Twitch';
         }
     }
 
